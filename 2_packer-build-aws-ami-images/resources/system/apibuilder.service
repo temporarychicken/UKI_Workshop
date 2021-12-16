@@ -1,0 +1,9 @@
+[Unit]
+Description=API Builder Service
+
+[Service]
+ExecStart=/home/ubuntu/resources/scripts/apibuilder.sh
+
+[Install]
+WantedBy=multi-user.target
+

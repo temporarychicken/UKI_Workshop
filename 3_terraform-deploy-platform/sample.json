@@ -1,0 +1,19 @@
+{
+    "Comment": "CREATE/DELETE/UPSERT a record ",
+    "Changes": [{
+            "Action": "DELETE",
+
+            "ResourceRecordSet": {
+"Name": "_acme-challenge.axwaydemo.net.",
+            "Type": "TXT",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "\"PLv1XG03coz8T8Ro8r_22mh-u51UnjfojwQnxz9tYvc\""
+                }
+            ]
+
+            }
+        }
+    ]
+}

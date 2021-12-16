@@ -1,0 +1,32 @@
+resource "aws_instance" "nginx-plus-generic" {
+  ami                         = data.aws_ami.ngx_plus.id # eu-west-2
+  instance_type               = "t2.medium"
+  key_name                    = "nginx-server-key"
+  security_groups             = [aws_security_group.nginx-web-facing.id]
+  subnet_id                   = aws_subnet.main.id
+  count                       = 12
+  
+  tags = {
+    Name = "Server ${count.index}"
+  }
+
+  
+  provisioner "remote-exec" {
+  
+    connection {
+    type     = "ssh"
+    user     = "ubuntu"
+	private_key = file("~/.ssh/nginx-server-key.pem")
+    host     = self.public_ip
+  }
+  
+        inline = [
+		"sudo hostnamectl set-hostname nginxplus${count.index}",
+		"sudo sh -c 'echo -n ${ data.local_file.foo.content } >>/etc/hosts'",
+		"sudo sh -c 'echo \" controller.workshop0001.nginxdemo.net\" >>/etc/hosts'",
+		"ansible-playbook connect_nginx_server_to_controller.yaml",
+
+    ]
+  }
+  
+}

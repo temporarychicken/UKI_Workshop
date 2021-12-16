@@ -1,0 +1,43 @@
+<html>
+<head>
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <title>NGINX OpenID Connect demo</title>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id"
+          content="456549755625-e4kf3ao20u2uoal1lr6dgukdn4vn6eee.apps.googleusercontent.com">
+    <script src="js.cookie.js"></script>
+</head>
+<body>
+    <h2>NGINX API Gateway JWT Authentication Demo</h2>
+    <hr/>
+    <h3>Login with a Google account then visit any of these JSON methods that form the 'Cheese' API.</h3>
+    <p> <a href="https://cheese.workshop0001.nginxdemo.net/emmental">Emmental</a>.</p>
+    <p> <a href="https://cheese.workshop0001.nginxdemo.net/cheddar">Cheddar</a>.</p>
+    <p> <a href="https://cheese.workshop0001.nginxdemo.net/beemster">Beemster</a>.</p>
+    <p> <a href="beemster">TEST - Beemster</a>.</p>
+
+
+
+    <table><tr><td>
+    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div></td>
+    <script>
+      function onSignIn(googleUser) {
+        var profile = googleUser.getBasicProfile();
+        Cookies.set('auth_token', googleUser.getAuthResponse().id_token);
+        document.getElementById('google_signout').innerHTML = '<a href="#" onclick="signOut();"><img src="' + profile.getImageUrl() + '" width=32 height=32>Sign out</a>';
+      };
+      function signOut() {
+        var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function () {
+          Cookies.remove('auth_token');
+          document.getElementById('google_signout').innerHTML = '';
+        });
+      }
+    </script>
+    <td><div id="google_signout"></div></td>
+    </tr></table>
+    <hr/>
+</body>
+</html>
