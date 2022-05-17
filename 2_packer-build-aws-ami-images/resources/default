@@ -135,6 +135,22 @@ server {
 }
 
 
+server {
+    server_name web.workshop0001.axwaydemo.net;
+    listen 443 ssl;
+    ssl_certificate /home/ubuntu/certs/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /home/ubuntu/certs/privkey.pem; # managed by Certbot
+    #include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    #ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+    root /var/www/html;
+    index jump_page.html;
+
+    location / {
+
+    }
+}
+
+
 
 
 

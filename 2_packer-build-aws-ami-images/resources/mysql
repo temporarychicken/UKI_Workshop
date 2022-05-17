@@ -1,0 +1,7 @@
+Package: mysql-server
+Pin: version 5.7*
+Pin-Priority: 1001
+
+Package: mysql-client
+Pin: version 5.7*
+Pin-Priority: 1001

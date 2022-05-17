@@ -7,11 +7,12 @@ resource "aws_instance" "workshop0001-axwayv7" {
   private_ip                  = "10.0.1.20"
   root_block_device {
       volume_size = 16
+	  
 	    tags = {
           Name = "workshop0001-axwayv7"
 	      Project = "Amplify UKI Workshop0001"
-
         }
+
   }
   
   tags = {
@@ -112,6 +113,7 @@ resource "null_resource" "post-instantiation-VM-actions" {
 		"sleep 30",
 		"sudo cp default /etc/nginx/sites-enabled/",
 		"sudo cp resources/.htpasswd /etc/nginx/.htpasswd",
+		"sudo cp /home/ubuntu/Desktop/jump_page.html /var/www/html/jump_page.html",
 		"sudo nginx -s reload",
 		"sudo cp /var/lib/jenkins/secrets/initialAdminPassword /home/ubuntu/jenkins_initial_password",
 	    "sudo chmod +r jenkins_initial_password",

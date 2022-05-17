@@ -7,6 +7,22 @@ resource "aws_vpc" "workshop0001-main" {
   }
 }
 
+resource "aws_default_security_group" "default" {
+  vpc_id = aws_vpc.workshop0001-main.id
+
+  ingress {
+    protocol  = -1
+    self      = true
+    from_port = 0
+    to_port   = 0
+  }
+
+  tags = {
+    Name = "AxwayTechlab-workshop0001"
+	Project = "Amplify UKI Workshop0001"
+  }
+}
+
 resource "aws_subnet" "workshop0001-main" {
   vpc_id     = aws_vpc.workshop0001-main.id
   cidr_block = "10.0.1.0/24"

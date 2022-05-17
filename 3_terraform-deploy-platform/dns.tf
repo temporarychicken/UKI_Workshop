@@ -51,6 +51,14 @@ resource "aws_route53_record" "workshop0001-apibuilder" {
 
 }
 
+resource "aws_route53_record" "workshop0001-web" {
+  zone_id = data.aws_route53_zone.selected.zone_id
+  name    = "web.workshop0001.${data.aws_route53_zone.selected.name}"
+  type    = "A"
+  ttl     = "60"
+  records = [ aws_instance.workshop0001-axwayv7.public_ip ]
+
+}
 
 resource "aws_route53_record" "workshop0001-jenkins" {
   zone_id = data.aws_route53_zone.selected.zone_id

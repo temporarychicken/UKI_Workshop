@@ -1,0 +1,23 @@
+FIPS=1
+SalesForce Connector=1
+ServiceNow Connector=1
+analytics=1
+api_visual_mapper=1
+apiportal=1
+company=Axway
+deployment_type=nondocker
+expires=Thu, 30 Jun 2022 17:43:33 GMT
+license_id=TEMP
+mcafee=1
+name=Axway
+sdkgenerator=1
+unrestricted=1
+version=7.7
+# SIGNATURE: 3fa062b47c54647865d548edb4b1347f2e9dde96b860618e71bd92d7690b3ea3
+# SIGNATURE: 334ec3f65f365d2e6fbc9c2d71796b1950d8745932fbb9b13d41921b50ac1723
+# SIGNATURE: 8931ee0ee0621f3a7eb21de1e6c6ea2d332a7a71f536ff3f93312536edbf59e4
+# SIGNATURE: 685b49d9e8b7c3009db40179617c824c6b671857e6e079f09aa8a585dec2f4e0
+# SIGNATURE: 842031bfa819516c5008dfb654095f45ddaef94d5001b7eaf59bfad116eac993
+# SIGNATURE: bdb0bb3cdded45a2fed57ae95f2000ebd32d01a415e7364079d050b9bb529428
+# SIGNATURE: 428251e27828362ae7c1bd65e9aee7eaff30d899e32e6e605a3d550095c34510
+# SIGNATURE: 124e2bb1ca6fa3e217b4d2c2732f06841a980f2248972001e790201bf8b40db6
