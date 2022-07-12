@@ -64,16 +64,16 @@
       "echo '#################################################################################################################'",  
 	  "echo 'DOWLOADING AND INSTALLING AXWAY API MANAGER INCLUDING PREREQUISITES'",
 	  "echo '#################################################################################################################'",
-	  "wget https://packer-build-resources.s3.eu-west-2.amazonaws.com/APIGateway_7.7.20220228_Install_linux-x86-64_BN02.run",
+	  "wget https://packer-build-resources.s3.eu-west-2.amazonaws.com/APIGateway_7.7.20220530_Install_linux-x86-64_BN02.run",
 	  	  
-	  "chmod +x APIGateway_7.7.20220228_Install_linux-x86-64_BN02.run",
+	  "chmod +x APIGateway_7.7.20220530_Install_linux-x86-64_BN02.run",
 	  "sudo apt-get update -y",
 	  "sudo apt-get install openjdk-8-jre-headless -y",
-      "sudo ./APIGateway_7.7.20220228_Install_linux-x86-64_BN02.run --mode unattended --unattendedmodeui minimalWithDialogs --nmHostnameOrIpChoice 127.0.0.1 --rnmConnectionUrl https://127.0.0.1:8090 --setup_type complete --adminpasswd Space*117 --changeCredentials 0 --apimgmtusername apiadmin --apiadminpasswd Space*117 --changeApimgmtCredentials 0 --licenseFilePath resources/api7.lic --analyticsLicenseFilePath resources/api7.lic --apimgmtLicenseFilePath resources/api7.lic --prefix /opt/Axway-7.7.0 --cassandraInstalldir /opt --cassandraJDK  /usr/lib/jvm/java-8-openjdk-amd64/jre --startCassandra 0",
+      "sudo ./APIGateway_7.7.20220530_Install_linux-x86-64_BN02.run --mode unattended --unattendedmodeui none --nmHostnameOrIpChoice 127.0.0.1 --rnmConnectionUrl https://127.0.0.1:8090  --setup_type complete --adminpasswd Space*117 --changeCredentials 0 --apimgmtusername apiadmin --apiadminpasswd Space*117 --changeApimgmtCredentials 0 --licenseFilePath resources/api7.lic --analyticsLicenseFilePath resources/api7.lic --apimgmtLicenseFilePath resources/api7.lic --prefix /opt/Axway-7.7.0 --cassandraInstalldir /opt --cassandraJDK  /usr/lib/jvm/java-8-openjdk-amd64/jre --startCassandra 0 --acceptGeneralConditions yes",
 
 
 	  "echo '#################################################################################################################'",
-	  "echo 'INSTALLING NODE JS VERSION 14 (A pre-requisite for API Builder)'",
+	  "echo 'INSTALLING NODE JS VERSION 18 (A pre-requisite for API Builder)'",
 	  "echo '#################################################################################################################'",
       "curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash -",
       "sudo apt-get remove nodejs -y",
@@ -181,39 +181,7 @@
 	  "sudo echo -e 'ubuntu\nubuntu' | (sudo passwd ubuntu)",
 
 	  
-	  
-	  
-	  "echo '#################################################################################################################'",
-	  "echo 'SETTING HOSTNAME FOR OUR API MANAGER SERVER'",
-	  "echo '#################################################################################################################'",
-	  "sudo hostnamectl set-hostname apiworkshop",
-
-
-	  "echo '#################################################################################################################'",
-	  "echo 'INSTALL JENKINS AUTOMATION SERVER'",
-	  "echo '#################################################################################################################'",
-	  "#sudo apt-get update -y",
-	  "#sudo apt-get install openjdk-8-jre-headless -y",
-	  "#wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -",
-      "#sudo sh -c 'echo deb https://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'",
-	  "#echo '#################################################################################################################'",
-	  "#echo 'APT UPDATE'",
-	  "#echo '#################################################################################################################'",
-	  "#sudo apt install ca-certificates",
-      "#sudo apt-get update",
-	  "echo '#################################################################################################################'",
-	  "echo 'INSTALL JENKINS'",
-	  "echo '#################################################################################################################'",
-      "#sudo apt-get install jenkins -y",
-      "#Change the default listening port from 8080 to 32080. Change the variable HTTP_PORT in the file below:",
-      "#sudo sed -i 's/HTTP_PORT=8080/HTTP_PORT=32080/g' /etc/default/jenkins",
-
-      "wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key |sudo gpg --dearmor -o /usr/share/keyrings/jenkins.gpg",
-	  "sudo sh -c 'echo deb [signed-by=/usr/share/keyrings/jenkins.gpg] http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'",
-	  "sudo apt update",
-	  "sudo apt install jenkins -y",
- 
- 
+	 
  
  	  "echo '#################################################################################################################'",
 	  "echo 'INSTALL API PORTAL AND PREREQUISITE DOCKER DAEMON'",
@@ -276,12 +244,44 @@
 	  "echo '#################################################################################################################'",
 	  "sed -i 's/ parseInt(process.env.PORT) || 8080/ 8083/g' mybuilderproject/conf/default.js",
 	  
+	  
+	  "echo '#################################################################################################################'",
+	  "echo 'SETTING HOSTNAME FOR OUR API MANAGER SERVER'",
+	  "echo '#################################################################################################################'",
+	  "sudo hostnamectl set-hostname apiworkshop",
 
 
 	  "echo '##################################################################################################################'",
       "echo 'INSTALLING THE NGINX REVERSE PROXY TO ENABLE TLS TERMINATION AT THE REVERSE-PROXY FRONT-END'",
 	  "echo '#################################################################################################################'",
       "sudo -H apt-get install -y nginx",
+	  
+
+	  "echo '#################################################################################################################'",
+	  "echo 'INSTALL JENKINS AUTOMATION SERVER'",
+	  "echo '#################################################################################################################'",
+	  "#sudo apt-get update -y",
+	  "#sudo apt-get install openjdk-8-jre-headless -y",
+	  "#wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -",
+      "#sudo sh -c 'echo deb https://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'",
+	  "#echo '#################################################################################################################'",
+	  "#echo 'APT UPDATE'",
+	  "#echo '#################################################################################################################'",
+	  "#sudo apt install ca-certificates",
+      "#sudo apt-get update",
+	  "#echo '#################################################################################################################'",
+	  "#echo 'INSTALL JENKINS'",
+	  "#echo '#################################################################################################################'",
+      "#sudo apt-get install jenkins -y",
+
+
+      "wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key |sudo gpg --dearmor -o /usr/share/keyrings/jenkins.gpg",
+	  "sudo sh -c 'echo deb [signed-by=/usr/share/keyrings/jenkins.gpg] http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'",
+	  "sudo apt update",
+	  "sudo apt install jenkins -y || true",
+      "#Change the default listening port from 8080 to 32080. Change the variable HTTP_PORT in the file below:",
+      "sudo sed -i 's/8080/32080/g' /lib/systemd/system/jenkins.service", 
+ 
 
       "echo '#################################################################################################################'",
       "echo 'DOWNLOADING THE SSH KEY TO ENABLE FUTURE ACCESS TO THIS SERVER'",

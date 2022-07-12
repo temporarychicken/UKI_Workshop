@@ -10,14 +10,14 @@ resource "aws_instance" "workshop0001-axwayv7" {
 	  
 	    tags = {
           Name = "workshop0001-axwayv7"
-	      Project = "Amplify UKI Workshop0001"
+	      Project = "Amplify UKI workshop0001"
         }
 
   }
   
   tags = {
     Name = "workshop0001-axwayv7"
-	Project = "Amplify UKI Workshop0001"
+	Project = "Amplify UKI workshop0001"
 
   }
 
@@ -85,6 +85,18 @@ resource "aws_instance" "workshop0001-axwayv7" {
       private_key = file("../keys/axwayv7-key.pem")
     }   
 	
+  }
+    provisioner "file" {
+    source      = "hosts"
+    destination = "hosts"
+	
+	
+    connection {   
+      host        = self.public_ip
+      user        = "ubuntu"
+      private_key = file("../keys/axwayv7-key.pem")
+    }   
+	
   } 
 }
 
@@ -126,7 +138,8 @@ resource "null_resource" "post-instantiation-VM-actions" {
 		"#until sudo apt-get upgrade -y; do sleep 10; done",
 		
 		"# COPY THE LATEST LICENSE INTO THE AXWAY APIM DIRECTORY #########################################",
-		"sudo cp api7.lic /opt/Axway-7.7.0/apigateway/conf/licenses/",
+		"sudo cp api7.lic /opt/Axway-7.7.0/apigateway/conf/licenses/api7.lic",
+		"sudo cp hosts /etc/hosts",
 		"sudo systemctl restart quickstart"
 
 

@@ -3,7 +3,7 @@ resource "aws_vpc" "workshop0001-main" {
 
   tags = {
     Name = "AxwayTechlab-workshop0001"
-	Project = "Amplify UKI Workshop0001"
+	Project = "Amplify UKI workshop0001"
   }
 }
 
@@ -19,7 +19,7 @@ resource "aws_default_security_group" "default" {
 
   tags = {
     Name = "AxwayTechlab-workshop0001"
-	Project = "Amplify UKI Workshop0001"
+	Project = "Amplify UKI workshop0001"
   }
 }
 
@@ -30,7 +30,7 @@ resource "aws_subnet" "workshop0001-main" {
 
   tags = {
     Name = "AxwayTechlab"
-	Project = "Amplify UKI Workshop0001"
+	Project = "Amplify UKI workshop0001"
   }
 }
 
@@ -39,7 +39,7 @@ resource "aws_internet_gateway" "workshop0001-gw" {
 
   tags = {
     Name = "AxwayTechlab"
-	Project = "Amplify UKI Workshop0001"
+	Project = "Amplify UKI workshop0001"
   }
 }
 
@@ -62,7 +62,7 @@ resource "aws_route_table" "workshop0001-rt" {
 
   tags = {
     Name = "workshop0001-AxwayTechlab"
-	Project = "Amplify UKI Workshop0001"
+	Project = "Amplify UKI workshop0001"
 
   }
 }

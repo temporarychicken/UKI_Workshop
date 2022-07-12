@@ -8,7 +8,7 @@ resource "aws_security_group" "workshop0001-nginx-web-facing" {
     from_port   = 3306
     to_port     = 3306
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = ["${chomp(data.http.myip.body)}/32"]
 
   }
 
@@ -17,7 +17,7 @@ resource "aws_security_group" "workshop0001-nginx-web-facing" {
     from_port   = 3389
     to_port     = 3389
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = ["${chomp(data.http.myip.body)}/32"]
 
   }
 
@@ -27,7 +27,7 @@ resource "aws_security_group" "workshop0001-nginx-web-facing" {
     from_port   = 443
     to_port     = 443
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = ["${chomp(data.http.myip.body)}/32"]
 
   }
 
@@ -36,7 +36,7 @@ resource "aws_security_group" "workshop0001-nginx-web-facing" {
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = ["${chomp(data.http.myip.body)}/32"]
   }
 
   ingress {
@@ -44,7 +44,7 @@ resource "aws_security_group" "workshop0001-nginx-web-facing" {
     from_port   = 8088
     to_port     = 8088
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = ["${chomp(data.http.myip.body)}/32"]
   }
 
   ingress {
@@ -52,7 +52,7 @@ resource "aws_security_group" "workshop0001-nginx-web-facing" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = ["${chomp(data.http.myip.body)}/32"]
   }
 
   ingress {
@@ -60,7 +60,7 @@ resource "aws_security_group" "workshop0001-nginx-web-facing" {
     from_port   = 8443
     to_port     = 8443
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = ["${chomp(data.http.myip.body)}/32"]
 
   }
 
@@ -69,7 +69,7 @@ resource "aws_security_group" "workshop0001-nginx-web-facing" {
     from_port   = 3000
     to_port     = 3000
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = ["${chomp(data.http.myip.body)}/32"]
 
   }
 
@@ -83,7 +83,7 @@ resource "aws_security_group" "workshop0001-nginx-web-facing" {
 
   tags = {
     Name = "workshop0001-axwayv7"
-	Project = "Amplify UKI Workshop0001"
+	Project = "Amplify UKI workshop0001"
 
   }
 }

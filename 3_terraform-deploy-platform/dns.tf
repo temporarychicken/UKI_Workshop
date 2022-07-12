@@ -80,10 +80,7 @@ resource "aws_route53_record" "workshop0001-api" {
 
 }
 
-# This gets your IP from a simple HTTP request - note it's V4.
-data "http" "myip" {
-  url = "https://api.ipify.org"
-}
+
 
 
 
